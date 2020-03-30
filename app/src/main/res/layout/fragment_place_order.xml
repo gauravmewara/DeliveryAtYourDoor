@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_fg_placeorder_list"
+        android:layout_above="@+id/rl_fg_placeorder_cart"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/rl_fg_placeorder_cart"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_fgplaceorder_cart_title"
+            android:layout_marginLeft="15dp"
+            android:text="Cart"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/tv_fg_placeorder_cart_rs_title"
+            android:text="Total Rs"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_fgplaceorder_cart_rs"
+            android:layout_marginRight="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="40dp"
+            android:layout_height="30dp"
+            android:id="@+id/tv_fgplaceorder_cart_rs"
+            android:layout_toLeftOf="@+id/iv_fg_placeorder_cart_arrow"
+            android:text="2000"
+            android:textSize="14dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/iv_fg_placeorder_cart_arrow"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>
