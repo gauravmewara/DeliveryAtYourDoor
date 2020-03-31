@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">DeliveryAtYourDoor</string>
+    <string name="selectYourWard">Select Your Ward</string>
+    <string name="wardzone">Ward Zone</string>
+    <string name="wardNo">Ward No.</string>
+    <string name="tv_link">This is the delivery Link</string>
+    <string name="selectward">Select Ward</string>
+    <string name="dashward">Dashward</string>
+    <string name="logout">LogOut</string>
+    <string name="proceed">Proceed</string>
+    <string name="totalOrders">Total Orders:</string>
+    <string name="totalAmount">Total Amounts:</string>
+    <string name="pending">Pending</string>
+    <string name="completed">Completed</string>
+    <string name="cancelled">Cancelled</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

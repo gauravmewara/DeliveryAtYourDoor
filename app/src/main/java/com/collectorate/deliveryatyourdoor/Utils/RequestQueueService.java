@@ -15,7 +15,8 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.watertankercontroller.R;
+import com.collectorate.deliveryatyourdoor.R;
+
 
 import java.util.HashMap;
 import java.util.Map;

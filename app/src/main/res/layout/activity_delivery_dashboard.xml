@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DeliveryDashboard">
+
+    <include
+        layout="@layout/maintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/dileveryDashboardTitle"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_dashboardHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ward 1 North"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorblack"
+        android:layout_below="@+id/dileveryDashboardTitle"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/lh_dashboardTotalLayout"
+        android:weightSum="3"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tv_dashboardHead">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/tv_totalOrders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/totalOrders"/>
+            <TextView
+                android:id="@+id/tv_totalorders_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text=" "/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tv_totalAmounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/totalAmount"/>
+            <TextView
+                android:id="@+id/tv_totalAmounts_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text=" "/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lh_dashboardTotalLayout"
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/searchLayout"
+        android:layout_marginTop="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/vp_dashboard"
+        android:layout_alignParentBottom="true"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rl_btnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <Button
+                android:id="@+id/btn_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pending"
+                android:padding="3dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/transparent"/>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/btn_pending"
+                android:id="@+id/btn_devider"
+                android:layout_marginTop="10dp"/>
+            <Button
+                android:id="@+id/btn_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/completed"
+                android:layout_toRightOf="@+id/btn_devider"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"/>
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/btn_complete"
+                android:id="@+id/btn_devider2"
+                android:layout_marginTop="10dp"/>
+            <Button
+                android:id="@+id/btn_cancelled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/completed"
+                android:layout_toRightOf="@+id/btn_devider2"
+                android:textColor="@color/colorBlack"
+                android:background="@android:color/transparent"
+                android:textSize="12sp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_marginTop="10dp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

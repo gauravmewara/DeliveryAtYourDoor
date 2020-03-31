@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mi_selectward"
+        android:title="@string/selectward" />
+    <item android:id="@+id/mi_dashbord"
+        android:title="@string/dashward" />
+    <item android:id="@+id/mi_logout"
+        android:title="@string/logout" />
+
+
+<!--    <item android:id="@+id/crd_det"
+        android:title="@string/crd_det" />
+    <item android:id="@+id/chge_mob"
+        android:title="@string/chge_mob" />-->
+
+</menu>
