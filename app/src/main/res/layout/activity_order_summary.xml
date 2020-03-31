@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.OrderSummary">
+    <include
+        layout="@layout/maintoolbar"
+        android:id="@+id/main_toolbar2"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_ordersummary_orderidbar"
+        android:layout_below="@+id/main_toolbar2"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_ordersummary_id_title"
+                android:text="Order Id:"
+                android:textSize="13dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_ordersummary_orderid"
+                android:layout_marginLeft="5dp"
+                android:text="47669879075"
+                android:textSize="13dp" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/rl_ordersummary_orderidbar"
+        android:layout_marginTop="2dp"
+        android:id="@+id/ll_ordersummary_orderdate">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Date:"
+            android:textSize="13dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_orderdate"
+            android:layout_marginLeft="3dp"
+            android:text="13 Nov 2019,04:55:34"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_ordersummary_customerinfo_title"
+        android:layout_below="@+id/ll_ordersummary_orderdate"
+        android:text="Customer Info:"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_ordersummary_customerinfo"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:padding="15dp"
+        android:layout_alignLeft="@+id/tv_ordersummary_customerinfo_title"
+        android:layout_below="@+id/tv_ordersummary_customerinfo_title">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_name"
+            android:textSize="12dp"
+            android:text="Mungeri Lal Vyas"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_adapter_order_customer_mobile"
+            android:maxLength="10"
+            android:layout_marginTop="2dp"
+            android:textSize="12dp"
+            android:text="9785770989"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_order_ward"
+            android:textSize="12dp"
+            android:text="Ward 1 North" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_address"
+            android:textSize="12dp"
+            android:text="hfsflskf;lsakflkllfkdkflskf;lskf;lskflks;lfksklfjjkhfjdhvkjdfhvhjfdbvbvhfdbvhfdbhbhvfdhvhdfvhjfdvbjhfdvjfdhvj"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_ordersummary_itemlist"
+        android:layout_marginTop="2dp"
+        android:layout_above="@+id/rl_ordersummary_order_amt"
+        android:layout_below="@+id/ll_ordersummary_customerinfo"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_ordersummary_order_amt"
+        android:layout_marginRight="5dp"
+        android:layout_above="@+id/ll_ordersummary_deliverycode"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_amt_title"
+            android:layout_toLeftOf="@+id/tv_ordersummary_totalamt"
+            android:textSize="13dp"
+            android:text="Total: "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_totalamt"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="1dp"
+            android:textSize="13dp"
+            android:text="400000 Rs"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:id="@+id/ll_ordersummary_deliverycode"
+        android:layout_above="@+id/tv_ordersummary_actionbtn"
+        android:orientation="horizontal"
+        android:layout_marginBottom="3dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Code: "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_ordersummary_deliverycode"
+            android:text="Avg568Fjb"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/tv_ordersummary_actionbtn"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="Place Order"
+        android:textSize="16dp"
+        android:textColor="@color/colorBlack"/>
+</RelativeLayout>

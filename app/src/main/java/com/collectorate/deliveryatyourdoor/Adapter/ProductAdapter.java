@@ -1,4 +1,4 @@
 package com.collectorate.deliveryatyourdoor.Adapter;
 
-public class ItemAdapter {
+public class ProductAdapter {
 }

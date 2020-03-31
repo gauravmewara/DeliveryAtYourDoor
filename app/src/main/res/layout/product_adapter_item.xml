@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_adapter_product_name"
+        android:text="Chana Dal No.1"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_adapter_product_packaging"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_adapter_product_name"
+        android:layout_toLeftOf="@+id/ll_adapter_product_chng_qty"
+        android:layout_marginTop="2dp"
+        android:text="1 Kg Pack"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_adapter_product_unit_price"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_adapter_product_packaging"
+        android:layout_toLeftOf="@+id/ll_adapter_product_chng_qty"
+        android:text="60 Rs / Pack"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/ll_adapter_product_chng_qty"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_adapter_product_qty_sub"
+            android:text="-"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:layout_centerVertical="true"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack"/>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_adapter_product_qty"
+            android:text="45"
+            android:textSize="15dp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:layout_centerVertical="true"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/tv_adapter_product_qty_add"
+            android:text="+"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"/>
+    </LinearLayout>
+</RelativeLayout>
