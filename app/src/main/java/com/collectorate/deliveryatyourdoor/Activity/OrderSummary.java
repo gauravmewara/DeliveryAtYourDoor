@@ -148,7 +148,7 @@ public class OrderSummary extends AppCompatActivity {
                 cancelorder.show();
             }
         });
-        orderamt = (TextView)findViewById(R.id.tv_ordersummary_ordertotal);
+        orderamt = (TextView)findViewById(R.id.tv_ordersummary_orderamt);
 
         orderstatuslayout = (RelativeLayout) findViewById(R.id.rl_ordersummary_orderstatuslayout);
         deliverycodeview = (LinearLayout) findViewById(R.id.ll_ordersummary_deliverycode);
