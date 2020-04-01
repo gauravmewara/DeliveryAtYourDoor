@@ -176,7 +176,7 @@ public class OrderHistory extends Fragment {
                                     order.setCancel_reason(orderdetail.getString("reason"));
                                     JSONArray items = orderdetail.getJSONArray("items");
                                     ArrayList<ProductsModal> itemList = new ArrayList<>();
-                                    for(int j=0;j<itemList.size();j++){
+                                    for(int j=0;j<items.length();j++){
                                         ProductsModal bmod = new ProductsModal();
                                         JSONObject product = items.getJSONObject(j).getJSONObject("product");
                                         bmod.setProductId(product.getString("_id"));

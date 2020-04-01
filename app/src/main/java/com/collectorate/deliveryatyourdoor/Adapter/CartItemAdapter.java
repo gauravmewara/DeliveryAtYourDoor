@@ -44,7 +44,7 @@ public class CartItemAdapter extends RecyclerView.Adapter {
                 cancel.setVisibility(View.VISIBLE);
                 cancel.setClickable(true);
             }else{
-                cancel.setVisibility(View.GONE);
+                cancel.setVisibility(View.INVISIBLE);
                 cancel.setClickable(false);
             }
         }

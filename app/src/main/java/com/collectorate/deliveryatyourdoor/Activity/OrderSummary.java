@@ -38,6 +38,7 @@ import java.util.ArrayList;
 
 public class OrderSummary extends AppCompatActivity {
     TextView orderstatus,deliverycode,orderid,orderdate,deliverydate,deliverydatetext,rsntxt,rsn,cancel,orderamt;
+    TextView pagetitle;
     RelativeLayout orderstatuslayout;
     LinearLayout deliverycodeview,deliverydateview;
     RecyclerView cartlistview;
@@ -60,6 +61,8 @@ public class OrderSummary extends AppCompatActivity {
         setContentView(R.layout.activity_order_summary);
         order = (OrderModal)getIntent().getSerializableExtra("order");
         selecteposition = (int)getIntent().getIntExtra("position",0);
+        pagetitle = (TextView)findViewById(R.id.tv_toolbar2_heading);
+        pagetitle.setText("Order Details");
         orderstatus = (TextView)findViewById(R.id.tv_ordersummary_orderstatus);
         deliverycode = (TextView)findViewById(R.id.tv_ordersummary_deliverycode);
         orderid = (TextView)findViewById(R.id.tv_ordersummary_orderid);
@@ -145,7 +148,7 @@ public class OrderSummary extends AppCompatActivity {
                 cancelorder.show();
             }
         });
-        orderamt = (TextView)findViewById(R.id.tv_ordersummary_orderamt);
+        orderamt = (TextView)findViewById(R.id.tv_ordersummary_ordertotal);
 
         orderstatuslayout = (RelativeLayout) findViewById(R.id.rl_ordersummary_orderstatuslayout);
         deliverycodeview = (LinearLayout) findViewById(R.id.ll_ordersummary_deliverycode);
