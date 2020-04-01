@@ -1,7 +1,6 @@
 package com.collectorate.deliveryatyourdoor.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.collectorate.deliveryatyourdoor.R;
 import com.collectorate.deliveryatyourdoor.Utils.FetchDataListener;
 import com.collectorate.deliveryatyourdoor.Utils.HeadersUtil;
@@ -17,7 +15,7 @@ import com.collectorate.deliveryatyourdoor.Utils.POSTAPIRequest;
 import com.collectorate.deliveryatyourdoor.Utils.RequestQueueService;
 import com.collectorate.deliveryatyourdoor.Utils.SessionManagement;
 import com.collectorate.deliveryatyourdoor.Utils.URLs;
-
+import com.google.firebase.iid.FirebaseInstanceId;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -72,8 +70,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             jsonBodyObj.put("phone", mobile.getText().toString().trim());
             jsonBodyObj.put("password", password.getText().toString().trim());
             jsonBodyObj.put("device_type", "a");
-            //String token = FirebaseInstanceId.getInstance().getToken();
-            //jsonBodyObj.put("device_token", token);
+            jsonBodyObj.put("userType","1");
+            String token = FirebaseInstanceId.getInstance().getToken();
+            jsonBodyObj.put("device_token", token);
             POSTAPIRequest postapiRequest=new POSTAPIRequest();
             String url = URLs.BASE_URL+ URLs.SIGN_IN_URL;
             Log.i("url",String.valueOf(url));
@@ -84,64 +83,59 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }catch (JSONException e){
             e.printStackTrace();
         }
-
     }
 
-    FetchDataListener loginApiListener;
-
-    {
-        loginApiListener = new FetchDataListener() {
-            @Override
-            public void onFetchComplete(JSONObject data) {
-                //RequestQueueService.cancelProgressDialog();
-                try {
-                    if (data != null) {
-                        if (data.getInt("error") == 0) {
-                            Log.i("Login", "Login Successfull");
-                            JSONObject userdetail = data.getJSONObject("data");
-                            if (userdetail != null) {
-                                SessionManagement.createLoginSession(Login.this,
-                                        true,
-                                        userdetail.getString("_id"),
-                                        userdetail.getString("phone"),
-                                        userdetail.getString("name"),
-                                        userdetail.getString("token"),
-                                        userdetail.getString("address"),
-                                        userdetail.getString("pincode"),
-                                        userdetail.getString("wardZone"),
-                                        userdetail.getString("wardNo"),
-                                        userdetail.getString("userType"),"9");
-
-                                Intent i = new Intent(Login.this, PlaceOrder.class);
-                                startActivity(i);
-                                finish();
-                            } else {
-                                RequestQueueService.showAlert("Error! No data fetched", Login.this);
-                                signin.setClickable(true);
-                            }
+    FetchDataListener loginApiListener = new FetchDataListener() {
+        @Override
+        public void onFetchComplete(JSONObject data) {
+            //RequestQueueService.cancelProgressDialog();
+            try {
+                if (data != null) {
+                    if (data.getInt("error") == 0) {
+                        Log.i("Login", "Login Successfull");
+                        JSONObject userdetail = data.getJSONObject("data");
+                        if (userdetail != null) {
+                            SessionManagement.createLoginSession(Login.this,
+                                    true,
+                                    userdetail.getString("_id"),
+                                    userdetail.getString("phone"),
+                                    userdetail.getString("name"),
+                                    userdetail.getString("token"),
+                                    userdetail.getString("address"),
+                                    userdetail.getString("pincode"),
+                                    userdetail.getString("wardZone"),
+                                    userdetail.getString("wardNo"),
+                                    userdetail.getString("userType"), "9");
+                            Intent i = new Intent(Login.this, PlaceOrder.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            RequestQueueService.showAlert("Error! No data fetched", Login.this);
+                            signin.setClickable(true);
                         }
-                    } else {
-                        RequestQueueService.showAlert("Error! No data fetched", Login.this);
-                        signin.setClickable(true);
                     }
-                } catch (Exception e) {
-                    RequestQueueService.showAlert("Something went wrong", Login.this);
+                } else {
+                    RequestQueueService.showAlert("Error! No data fetched", Login.this);
                     signin.setClickable(true);
-                    e.printStackTrace();
                 }
-            }
-
-            @Override
-            public void onFetchFailure(String msg) {
-                //RequestQueueService.cancelProgressDialog();
-                RequestQueueService.showAlert(msg, Login.this);
+            } catch (Exception e) {
+                RequestQueueService.showAlert("Something went wrong", Login.this);
                 signin.setClickable(true);
+                e.printStackTrace();
             }
+        }
 
-            @Override
-            public void onFetchStart() {
-                //RequestQueueService.showProgressDialog(Login.this);
-            }
-        };
-    }
+        @Override
+        public void onFetchFailure(String msg) {
+            //RequestQueueService.cancelProgressDialog();
+            RequestQueueService.showAlert(msg, Login.this);
+            signin.setClickable(true);
+        }
+
+        @Override
+        public void onFetchStart() {
+            //RequestQueueService.showProgressDialog(Login.this);
+        }
+    };
+
 }

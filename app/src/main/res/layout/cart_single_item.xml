@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_cartitem_itemname"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:text="Sonu Poha"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_cartitem_itempackaging"
+        android:layout_alignBottom="@+id/tv_cartitem_amt"
+        android:layout_alignLeft="@id/tv_cartitem_itemname"
+        android:text="1 Kg"/>
+
+    <RelativeLayout
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/rl_cartitem_remove"
+        android:layout_alignParentRight="true">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_cartitem_amt_unit"
+        android:text="Rs"
+        android:layout_alignBottom="@+id/tv_cartitem_amt"
+        android:layout_alignTop="@+id/tv_cartitem_amt"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/tv_cartitem_amt"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_cartitem_amt"
+        android:layout_below="@+id/rl_cartitem_remove"
+        android:layout_marginTop="5dp"
+        android:layout_alignRight="@+id/rl_cartitem_remove"
+        android:text="500"/>
+</RelativeLayout>

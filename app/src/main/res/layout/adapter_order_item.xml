@@ -2,123 +2,63 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/rl_adapter_order_mainlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
+    android:padding="15dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_adapter_order_orderidbar">
-        <RelativeLayout
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/rl_adapter_order_order_amt">
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_adapter_order_id_title"
-                android:text="Order Id"
-                android:textSize="13dp"/>
+                android:text="Order ID: "
+                android:textSize="14dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_adapter_order_orderid"
-                android:layout_marginTop="1dp"
-                android:text="47669879075"
-                android:textSize="13dp"
-                android:layout_alignLeft="@+id/tv_adapter_order_id_title"
-                android:layout_below="@+id/tv_adapter_order_id_title"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_adapter_order_order_amt"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_adapter_order_amt_title"
-                android:textSize="13dp"
-                android:text="Amount"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:id="@+id/tv_adapter_order_amt"
-                android:layout_alignLeft="@+id/tv_adapter_order_amt_title"
-                android:layout_below="@+id/tv_adapter_order_amt_title"
-                android:textSize="13dp"
-                android:text="400000 Rs"/>
-        </RelativeLayout>
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/divider1_adapter_order"
-        android:background="@color/colorBlack"
-        android:layout_marginTop="2dp"
-        android:layout_below="@+id/rl_adapter_order_orderidbar"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/divider1_adapter_order"
-        android:layout_marginTop="2dp"
-        android:id="@+id/ll_adapter_order_orderdate">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order Date:"
-            android:textSize="13dp"/>
+                android:text="hjkjl;jj;ljljklj;"
+                android:textSize="14dp"/>
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_adapter_order_orderdate"
-            android:layout_marginLeft="3dp"
-            android:text="13 Nov 2019,04:55:34"/>
+            android:text="30 Mar 2020"
+            android:textSize="13dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_adapter_order_orderprice"
+            android:text="400 Rs"
+            android:textSize="13dp"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_adapter_order_customerinfo_title"
-        android:layout_below="@+id/ll_adapter_order_orderdate"
-        android:text="Customer Info"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="2dp"
-        android:padding="15dp"
-        android:layout_alignLeft="@+id/tv_adapter_order_customerinfo_title"
-        android:layout_below="@+id/tv_adapter_order_customerinfo_title">
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:id="@+id/rl_adapter_order_orderstatuslayout"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="3dp"
+        android:background="@color/colorBlack">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_adapter_order_name"
-            android:textSize="12dp"
-            android:text="Mungeri Lal Vyas"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_adapter_order_customer_mobile"
-            android:maxLength="10"
-            android:layout_marginTop="2dp"
-            android:textSize="12dp"
-            android:text="9785770989"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_adapter_order_ward"
-            android:textSize="12dp"
-            android:text="Ward 1 North" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_adapter_order_address"
-            android:textSize="12dp"
-            android:text="hfsflskf;lsakflkllfkdkflskf;lskf;lskflks;lfksklfjjkhfjdhvkjdfhvhjfdbvbvhfdbvhfdbhbhvfdhvhdfvhjfdvbjhfdvjfdhvj"/>
-    </LinearLayout>
-
+            android:id="@+id/tv_adapter_order_orderstatus"
+            android:text="Pending"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="11dp"/>
+    </RelativeLayout>
 </RelativeLayout>

@@ -6,6 +6,10 @@ public class URLs {
     public static final String SIGN_OUT_URL = "user/signout";
     public static final String SIGN_UP_URL = "user/signup";
     public static final String PROFILE_URL = "user/profile";
+    public static final String PRODUCT_LIST_URL = "product/list";
+    public static final String PLACE_ORDER_URL = "order/place";
+    public static final String ORDER_LIST_URL = "order/list";
+    public static final String CANCEL_ORDER_URL = "order/cancel/";
 
 
 

@@ -1,4 +1,6 @@
 package com.collectorate.deliveryatyourdoor.Fragment;
 
-public class ChangePassword {
+import androidx.fragment.app.Fragment;
+
+public class ChangePassword extends Fragment {
 }

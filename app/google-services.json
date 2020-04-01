@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "104393448623",
+    "firebase_url": "https://atyourdoor-eb7a4.firebaseio.com",
+    "project_id": "atyourdoor-eb7a4",
+    "storage_bucket": "atyourdoor-eb7a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104393448623:android:7edcc080792a8e1fc5085a",
+        "android_client_info": {
+          "package_name": "com.collectorate.deliveryatyourdoor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104393448623-bn3al1haj6perufm3cbd030935ebfa2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collectorate.deliveryatyourdoor",
+            "certificate_hash": "26ffaf0c71440d4312fbabee5268d598594a7b11"
+          }
+        },
+        {
+          "client_id": "104393448623-8sktvig34ph4shdef7k1ums6hvt5qpp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy80tucorlw0kktClgb5vHc6CQJOATm38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104393448623-8sktvig34ph4shdef7k1ums6hvt5qpp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

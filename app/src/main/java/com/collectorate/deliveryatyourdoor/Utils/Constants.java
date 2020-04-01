@@ -1,6 +1,13 @@
 package com.collectorate.deliveryatyourdoor.Utils;
 
 public class Constants {
+
+    public static final int MAX_ORDER_LIMIT=3;
+    public static final String CART_INIT="Cart";
+    public static final String SUMMARY_INIT="OrderSummary";
+    public static final int SUMMARY_CANCEL_REQUEST_CODE=10001;
+
+
     public static final String ONGOING_CALL="Ongoing";
     public static final String PENDING_CALL="Pending";
     public static final String COMPLETED_CALL="Completed";

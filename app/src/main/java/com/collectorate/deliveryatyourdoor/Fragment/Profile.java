@@ -1,4 +1,6 @@
 package com.collectorate.deliveryatyourdoor.Fragment;
 
-public class Profile {
+import androidx.fragment.app.Fragment;
+
+public class Profile extends Fragment {
 }
