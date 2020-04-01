@@ -76,19 +76,28 @@ public class OrderSummary extends AppCompatActivity {
                 View sheetView = LayoutInflater.from(OrderSummary.this).inflate(R.layout.order_cancel_dialog,null);
                 cancelorder.setContentView(sheetView);
                 reasonList = new ArrayList<>();
-                reasonList.add("Select Reason");
-                reasonList.add("Incorrect Ward");
-                reasonList.add("Incorrect Contact Detail");
-                reasonList.add("Customer refused to take product");
+                reasonList.add("Reason For Cancellation");
+                reasonList.add("Product not satisfactory");
+                reasonList.add("Delivery time is large");
                 reasonList.add("Other");
+
+
                 reason = (Spinner)sheetView.findViewById(R.id.sp_order_cancel_rsnlist);
                 other = (EditText)sheetView.findViewById(R.id.et_fragment_cancel_rsn_txt);
-                ArrayAdapter reasondapter = new ArrayAdapter(OrderSummary.this,R.layout.spinner_single_item,reasonList);
+
+                ArrayAdapter<String> reasondapter = new ArrayAdapter<String>(OrderSummary.this, android.R.layout.simple_spinner_item, reasonList);
+                reasondapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                reason.setAdapter(reasondapter);
+
+                //ArrayAdapter reasondapter = new ArrayAdapter(OrderSummary.this,R.layout.spinner_single_item,reasonList);
                 reason.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        if(i==0)
+                        if(i==0) {
                             reasonselected = false;
+                            other.setVisibility(View.GONE);
+                            otherselected = false;
+                        }
                         else {
                             cancelreason = reasonList.get(i);
                             if(cancelreason.equals("Other")){
@@ -96,6 +105,7 @@ public class OrderSummary extends AppCompatActivity {
                                 otherselected = true;
                             }else{
                                 other.setVisibility(View.GONE);
+                                otherselected = false;
                             }
                             reasonselected = true;
                         }
@@ -238,12 +248,13 @@ public class OrderSummary extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent resultIntent = new Intent(this,PlaceOrder.class);
+        Intent resultIntent = getIntent();
         if(cancelled) {
             resultIntent.putExtra("cancelled", "yes");
             resultIntent.putExtra("position", selecteposition);
-        } else
-            resultIntent.putExtra("cancelled","no");
+        } else {
+            resultIntent.putExtra("cancelled", "no");
+        }
         setResult(Activity.RESULT_OK,resultIntent);
         finish();
     }

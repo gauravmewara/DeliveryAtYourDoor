@@ -38,6 +38,7 @@ public class PlaceOrder extends AppCompatActivity implements View.OnClickListene
     RelativeLayout toolbar_notification,noticountlayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     RelativeLayout toolbar_toggle,logout;
+    RelativeLayout homemenu,ordermenu,profilemenu,changepwdmenu,logoutmenu;
     FrameLayout fragmentPages;
     FragmentManager fm;
     FragmentTransaction ft;
@@ -57,6 +58,18 @@ public class PlaceOrder extends AppCompatActivity implements View.OnClickListene
         noticountlayout = (RelativeLayout)findViewById(R.id.rl_toolbar_notificationcount);
         notiCount = (TextView)findViewById(R.id.tv_toolbar_notificationcount);
         fragmentPages = (FrameLayout)findViewById(R.id.fl_placeorder_content);
+        pagetitle=(TextView)findViewById(R.id.tv_toolbar_heading);
+        pagetitle.setText("Place Order");
+        homemenu = (RelativeLayout)findViewById(R.id.rl_nav_home);
+        homemenu.setOnClickListener(this);
+        ordermenu = (RelativeLayout)findViewById(R.id.rl_nav_order);
+        ordermenu.setOnClickListener(this);
+        profilemenu = (RelativeLayout)findViewById(R.id.rl_nav_profile);
+        profilemenu.setOnClickListener(this);
+        changepwdmenu = (RelativeLayout)findViewById(R.id.rl_nav_changepwd);
+        changepwdmenu.setOnClickListener(this);
+        logoutmenu = (RelativeLayout)findViewById(R.id.rl_nav_logout);
+        logoutmenu.setOnClickListener(this);
         context = this;
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, navdrawer,
                 R.string.drawer_open, R.string.drawer_close) {

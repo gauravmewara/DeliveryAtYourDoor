@@ -9,8 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_signup_pagetitle"
-        android:layout_above="@+id/tv_signup_submit"
+        android:layout_above="@+id/tv_fragment_profile_submit"
         android:id="@+id/sv_fragment_profile"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
@@ -20,27 +19,36 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_fragment_profile_name"
-                    android:text="Name"
-                    android:textSize="13dp"/>
-            </RelativeLayout>
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp">
-                <TextView
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_fragment_profile_name"
+                        android:text="Name"
+                        android:textSize="15dp"/>
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_fragment_profile_mobile"
-                    android:text="Mobile Number"
-                    android:textSize="13dp"/>
-            </RelativeLayout>
+                    android:layout_marginTop="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_fragment_profile_mobile"
+                        android:text="Mobile Number"
+                        android:textSize="15dp"/>
+                </RelativeLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -50,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:minHeight="80dp"
                     android:gravity="top"
-                    android:id="@+id/et_signup_address"
+                    android:id="@+id/et_fragment_profile_address"
                     android:hint="Enter your address"/>
             </RelativeLayout>
             <RelativeLayout
@@ -59,7 +67,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_signup_pincode"
+                    android:id="@+id/et_fragment_profile_pincode"
                     android:hint="Pincode"/>
             </RelativeLayout>
             <RelativeLayout
@@ -68,43 +76,43 @@
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:id="@+id/et_signup_zone"
+                    android:id="@+id/sp_fragment_profile_zone"
                     />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:id="@+id/sp_fragment_profile_ward"
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_signup_knwward"
+                    android:id="@+id/tv_profile_knwward"
                     android:layout_alignParentRight="true"
                     android:hint="Know Your Ward"/>
             </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:id="@+id/et_signup_ward"
-                    android:layout_marginRight="5dp"
-                    android:text="Ward No"
-                    android:gravity="left|center_vertical"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/iv_signup_ward"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:foregroundGravity="center_vertical"/>
-            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:id="@+id/tv_signup_submit"
+        android:id="@+id/tv_fragment_profile_submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"

@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()){
             case R.id.tv_login_loginttbn:
                 signin.setClickable(false);
@@ -58,8 +59,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 }
                 break;
             case R.id.tv_login_signupbtn:
+                intent = new Intent(Login.this,SignUp.class);
+                startActivity(intent);
                 break;
             case R.id.tv_login_forgotpassword:
+                intent = new Intent(Login.this,ForgotPassword.class);
+                startActivity(intent);
                 break;
         }
     }

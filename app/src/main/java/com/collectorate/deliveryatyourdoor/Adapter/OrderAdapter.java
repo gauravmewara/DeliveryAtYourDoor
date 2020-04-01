@@ -50,10 +50,10 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         RelativeLayout orderstatuslayout,orderitemlayout;
         public OrderViewHolder(View view){
             super(view);
-            orderid = (TextView)view.findViewById(R.id.tv_adapter_product_name);
-            orderdate = (TextView)view.findViewById(R.id.tv_adapter_product_packaging);
-            orderprice = (TextView)view.findViewById(R.id.tv_adapter_product_unit_price);
-            orderstatus = (TextView)view.findViewById(R.id.tv_adapter_product_qty_add);
+            orderid = (TextView)view.findViewById(R.id.tv_adapter_order_orderid);
+            orderdate = (TextView)view.findViewById(R.id.tv_adapter_order_orderdate);
+            orderprice = (TextView)view.findViewById(R.id.tv_adapter_order_orderprice);
+            orderstatus = (TextView)view.findViewById(R.id.tv_adapter_order_orderstatus);
             orderstatuslayout = (RelativeLayout) view.findViewById(R.id.rl_adapter_order_orderstatuslayout);
             orderitemlayout = (RelativeLayout) view.findViewById(R.id.rl_adapter_order_mainlayout);
             orderitemlayout.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +170,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public void remove(int position){
         orderlist.remove(position);
         notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 
     public OrderModal getItem(int position) {

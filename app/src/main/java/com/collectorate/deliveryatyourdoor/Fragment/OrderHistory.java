@@ -66,8 +66,8 @@ public class OrderHistory extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_order_history,container,false);
         itemlistview = (RecyclerView)view.findViewById(R.id.rv_fg_orderhistory_list);
-        nodata = (TextView)view.findViewById(R.id.tv_placeorder_nodata);
-        progress = (ProgressBar)view.findViewById(R.id.pg_placeorder);
+        nodata = (TextView)view.findViewById(R.id.tv_orderhistory_nodata);
+        progress = (ProgressBar)view.findViewById(R.id.pg_orderhistory);
         nodata.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
         adapter = new OrderAdapter(getContext(),getActivity());
@@ -126,9 +126,12 @@ public class OrderHistory extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode== Constants.SUMMARY_CANCEL_REQUEST_CODE){
-            if(data.getStringExtra("cancelled").equals("yes")){
-                cancelledposition = data.getIntExtra("position",0);
-                adapter.remove(cancelledposition);
+            if(data!=null) {
+                if (data.getStringExtra("cancelled").equals("yes")) {
+                    cancelledposition = data.getIntExtra("position", 0);
+                    adapter.remove(cancelledposition);
+                    adapter.notifyDataSetChanged();
+                }
             }
         }
 

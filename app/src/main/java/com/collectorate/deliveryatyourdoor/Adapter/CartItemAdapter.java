@@ -24,7 +24,8 @@ public class CartItemAdapter extends RecyclerView.Adapter {
 
     public CartItemAdapter(Context context,ArrayList<ProductsModal> itemlist,String init_type){
         this.context=context;
-        this.removeListener = (CartItemRemoveListener)context;
+        if(init_type.equals(Constants.CART_INIT))
+            this.removeListener = (CartItemRemoveListener)context;
         this.itemlist=itemlist;
         this.init_type = init_type;
     }

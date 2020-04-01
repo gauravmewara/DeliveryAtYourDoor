@@ -82,6 +82,20 @@ public class SessionManagement {
     public static String getNotificationCount(Context con){
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_NOTICATION_TAG,SHARED_NOTIFICATION_COUNT_KEY);
     }
+
+    public static String getPincode(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PINCODE);
+    }
+
+    public static String getZone(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE);
+    }
+
+    public static String getWard(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,WARD);
+    }
+
+
     public static void setAddress(Context con,String address){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ADDRESS,address);
     }
@@ -93,5 +107,8 @@ public class SessionManagement {
     }
     public static void setUserType(Context con,String usrtype){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USERTYPE,usrtype);
+    }
+    public static void setPincode(Context con,String pincode){
+        SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PINCODE,pincode);
     }
 }

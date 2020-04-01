@@ -1,5 +1,6 @@
 package com.collectorate.deliveryatyourdoor.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.collectorate.deliveryatyourdoor.R;
 import com.collectorate.deliveryatyourdoor.Utils.FetchDataListener;
@@ -19,14 +21,23 @@ import com.collectorate.deliveryatyourdoor.Utils.POSTAPIRequest;
 import com.collectorate.deliveryatyourdoor.Utils.RequestQueueService;
 import com.collectorate.deliveryatyourdoor.Utils.SessionManagement;
 import com.collectorate.deliveryatyourdoor.Utils.URLs;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class SignUp extends AppCompatActivity implements View.OnClickListener {
     EditText name,phone,address,pincode,mobile,otp,password;
     Spinner zonespin,wardspin;
     TextView sendotp,knowward,submit;
@@ -34,6 +45,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, A
     boolean wardselected = false,zoneselected=false;
     ArrayList<String> zonedata;
     ArrayList<String> warddata;
+    boolean otpverified=false;
+    PhoneAuthProvider.ForceResendingToken mResendToken;
+    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+    private String mVerificationId;
+    private FirebaseAuth mAuth;
+    private String authToken;
+    String verification_code;
+    private boolean otpsent =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,67 +77,157 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, A
         zonedata.add("North");
         zonedata.add("South");
         warddata = new ArrayList<>();
-        for(int i=0;i<82;i++){
+        for(int i=0;i<81;i++){
             if(i==0){
                 warddata.add("Select Ward");
             }else{
                 warddata.add("Ward "+i);
             }
         }
-        zonespin.setOnItemSelectedListener(this);
-        wardspin.setOnItemSelectedListener(this);
-
-        //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter zoneadapter = new ArrayAdapter(this,R.layout.spinner_single_item,zonedata);
-        ArrayAdapter wardadapter = new ArrayAdapter(this,R.layout.spinner_single_item,warddata);
-        zoneadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        wardadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
-        zonespin.setAdapter(zoneadapter);
-        wardspin.setAdapter(wardadapter);
-
-    }
-
-
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        Log.d("Spinner Id:",String.valueOf(arg1.getId()));
-        switch (arg1.getId()){
-            case R.id.sp_signup_zone:
-                if(position==0){
+        zonespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
                     zoneselected = false;
                 }else{
                     zoneselected = true;
                 }
-                zoneval = zonedata.get(position);
-                break;
-            case R.id.sp_signup_ward:
-                if(position==0){
+                zoneval = zonedata.get(i).toLowerCase();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        wardspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
                     wardselected = false;
                 }else{
                     wardselected = true;
                 }
-                wardval = warddata.get(position);
-                break;
+                wardval = String.valueOf((i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<String> zoneadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, zonedata);
+        zoneadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ArrayAdapter<String> wardadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, warddata);
+        wardadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        zonespin.setAdapter(zoneadapter);
+        wardspin.setAdapter(wardadapter);
+
+        mAuth = FirebaseAuth.getInstance();
+
+    }
+
+
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+            mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+            //String otpCode = phoneAuthCredential.getSmsCode();
+            Toast.makeText(SignUp.this, "Verification Complete", Toast.LENGTH_SHORT).show();
         }
-        //Toast.makeText(getApplicationContext(),country[position] , Toast.LENGTH_LONG).show();
+
+        @Override
+        public void onVerificationFailed(@NonNull FirebaseException e) {
+            Log.i("OtpScreen", e.getMessage());
+            Toast.makeText(SignUp.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            Toast.makeText(SignUp.this, "Code Sent", Toast.LENGTH_SHORT).show();
+            otpsent = true;
+            mVerificationId=s;
+            Log.i("chck ver", mVerificationId);
+        }
+    };
+
+
+    private void verifyCode(String otpCode) {
+        Log.i("chck ver", mVerificationId);
+        Log.i("check_code", otpCode);
+        //PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otpCode);
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, otp.getText().toString().trim());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUp.this, "Verification Success", Toast.LENGTH_SHORT).show();
+                            signUpApiCall();
+
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                Toast.makeText(SignUp.this, "Otp Verification Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
+    private void sendVerificationCode(String mobileno) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                mobileno,
+                60,
+                TimeUnit.SECONDS,
+                this,
+                /*TaskExecutors.MAIN_THREAD,*/
+                mCallback);
     }
+
+
+    private void reSendVerificationCode(String mobileno) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                mobileno,
+                2,
+                TimeUnit.MINUTES,
+                this,
+                mCallbacks,
+                mResendToken);
+    }
+
+
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.tv_signup_submit:
+                if(otpsent=true){
+                    if(validData()) {
+                        verifyCode(otp.getText().toString().trim());
+                    } else
+                        Toast.makeText(SignUp.this,"Fill all details",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(SignUp.this,"Send OTP to Mobile",Toast.LENGTH_LONG).show();
+                }
+
                 break;
             case R.id.tv_signup_sendotp:
+                if (mobile.getText().toString().equals("")){
+                    mobile.setError("Enter your mobile number");
+                }else if (mobile.getText().toString().length()!=10){
+                    mobile.setError("Invalid Mobile No.");
+                }else {
+                    sendVerificationCode("+91"+mobile.getText().toString().trim());
+                }
                 break;
             case R.id.tv_signup_knwward:
+                Intent intent = new Intent(SignUp.this,PdfViewActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -179,21 +288,23 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, A
         }else{
             datavalid = false;
         }
-        if(!zoneselected && datavalid){
-            if(name.getText().toString().trim().equals("")){
+        if(zoneselected && datavalid){
+            datavalid = true;
+            /*if(name.getText().toString().trim().equals("")){
                 datavalid = false;
             }else{
                 datavalid = true;
-            }
+            }*/
         }else{
             datavalid = false;
         }
-        if(!wardselected && datavalid){
-            if(name.getText().toString().trim().equals("")){
+        if(wardselected && datavalid){
+           datavalid = true;
+            /* if(name.getText().toString().trim().equals("")){
                 datavalid = false;
             }else{
                 datavalid = true;
-            }
+            }*/
         }else{
             datavalid = false;
         }
@@ -222,47 +333,47 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, A
         }
     }
 
-    FetchDataListener signUpApiListener;
-    {
-        signUpApiListener = new FetchDataListener() {
-            @Override
-            public void onFetchComplete(JSONObject data) {
-                //RequestQueueService.cancelProgressDialog();
-                try {
-                    if (data != null) {
-                        if (data.getInt("error") == 0) {
-                            Log.i("Login", "Login Successfull");
-                            JSONObject userdetail = data.getJSONObject("data");
-                            if (userdetail != null) {
-                                Intent i = new Intent(SignUp.this, Login.class);
-                                startActivity(i);
-                                finish();
-                            } else {
-                                RequestQueueService.showAlert("Error! No data fetched", SignUp.this);
-                                submit.setClickable(true);
-                            }
+    FetchDataListener signUpApiListener = new FetchDataListener() {
+        @Override
+        public void onFetchComplete(JSONObject data) {
+            //RequestQueueService.cancelProgressDialog();
+            try {
+                if (data != null) {
+                    if (data.getInt("error") == 0) {
+                        Log.i("SignUp", "Signup Successfull");
+                        JSONObject userdetail = data.getJSONObject("data");
+                        if (userdetail != null) {
+                            Intent i = new Intent(SignUp.this, Login.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            RequestQueueService.showAlert("Error! No data fetched", SignUp.this);
+                            submit.setClickable(true);
                         }
-                    } else {
-                        RequestQueueService.showAlert("Error! No data fetched", SignUp.this);
-                        submit.setClickable(true);
                     }
-                } catch (Exception e) {
-                    RequestQueueService.showAlert("Something went wrong", SignUp.this);
+                } else {
+                    RequestQueueService.showAlert("Error! No data fetched", SignUp.this);
                     submit.setClickable(true);
-                    e.printStackTrace();
                 }
-            }
-            @Override
-            public void onFetchFailure(String msg) {
-                //RequestQueueService.cancelProgressDialog();
-                RequestQueueService.showAlert(msg, SignUp.this);
+            } catch (Exception e) {
+                RequestQueueService.showAlert("Something went wrong", SignUp.this);
                 submit.setClickable(true);
+                e.printStackTrace();
             }
-            @Override
-            public void onFetchStart() {
-                //RequestQueueService.showProgressDialog(Login.this);
-            }
-        };
-    }
+        }
+
+        @Override
+        public void onFetchFailure(String msg) {
+            //RequestQueueService.cancelProgressDialog();
+            RequestQueueService.showAlert(msg, SignUp.this);
+            submit.setClickable(true);
+        }
+
+        @Override
+        public void onFetchStart() {
+            //RequestQueueService.showProgressDialog(Login.this);
+        }
+    };
+
 
 }

@@ -133,9 +133,14 @@
                     android:id="@+id/sp_signup_zone"
                     />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,21 +157,11 @@
                     android:layout_height="35dp"
                     android:id="@+id/sp_signup_ward"
                     />
-                <!--<TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:id="@+id/et_signup_ward"
-                    android:layout_marginRight="5dp"
-                    android:text="Ward No"
-                    android:gravity="left|center_vertical"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/iv_signup_ward"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:foregroundGravity="center_vertical"/>-->
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
         </LinearLayout>
     </ScrollView>
     <TextView
