@@ -259,7 +259,7 @@ public class ForgotPassword extends AppCompatActivity {
                         sendVerificationCode("+91"+mobile.getText().toString().trim());
                         //Toast.makeText(ForgotPassword.this,data.getString("message"),Toast.LENGTH_LONG).show();
                     }else {
-                        RequestQueueService.showAlert("Error! No data fetched", ForgotPassword.this);
+                        RequestQueueService.showAlert("No User With This Mobile", ForgotPassword.this);
                     }
                 } else {
                     RequestQueueService.showAlert("Error! No data fetched", ForgotPassword.this);
