@@ -2,12 +2,16 @@ package com.collectorate.deliveryatyourdoor.Activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -185,9 +189,40 @@ public class PlaceOrder extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode== Constants.SUMMARY_CANCEL_REQUEST_CODE) {
-            if (getSupportFragmentManager().findFragmentById(R.id.fl_placeorder_content) instanceof OrderHistory)
-                orders.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (requestCode == Constants.SUMMARY_CANCEL_REQUEST_CODE) {
+                if (getSupportFragmentManager().findFragmentById(R.id.fl_placeorder_content) instanceof OrderHistory)
+                    orders.onActivityResult(requestCode, resultCode, data);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!(getSupportFragmentManager().findFragmentById(R.id.fl_placeorder_content) instanceof OrderPlaceFragment)){
+            loadFragment(placeorder);
+        }else{
+            showExitAlert();
+        }
+    }
+
+    public void showExitAlert() {
+        try {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(PlaceOrder.this);
+            builder.setTitle("Exit");
+            builder.setMessage("Do you want to exit Application?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", null);
+            builder.show();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

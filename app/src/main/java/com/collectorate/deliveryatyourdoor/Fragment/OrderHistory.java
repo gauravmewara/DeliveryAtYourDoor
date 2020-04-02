@@ -32,6 +32,7 @@ import com.collectorate.deliveryatyourdoor.Utils.PaginationScrollListener;
 import com.collectorate.deliveryatyourdoor.Utils.RequestQueueService;
 import com.collectorate.deliveryatyourdoor.Utils.SessionManagement;
 import com.collectorate.deliveryatyourdoor.Utils.URLs;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -129,8 +130,9 @@ public class OrderHistory extends Fragment {
             if(data!=null) {
                 if (data.getStringExtra("cancelled").equals("yes")) {
                     cancelledposition = data.getIntExtra("position", 0);
-                    adapter.remove(cancelledposition);
-                    adapter.notifyDataSetChanged();
+                    int ord = data.getIntExtra("oldorder",0);
+                    OrderModal neword = (OrderModal)data.getSerializableExtra("neworder");
+                    adapter.upadteList(ord,neword);
                 }
             }
         }
@@ -168,8 +170,17 @@ public class OrderHistory extends Fragment {
                                         status = "Pending";
                                     }else if(status.equals("2")){
                                         status = "Delivered";
+                                        JSONObject cancelledby = orderdetail.getJSONObject("deliveredBy");
+                                        order.setActionbyid(cancelledby.getString("_id"));
+                                        order.setActionbyname(cancelledby.getString("name"));
+                                        order.setActiondate(orderdetail.getString("canceledAt"));
+
                                     }else if(status.equals("3")){
                                         status = "Cancelled";
+                                        JSONObject cancelledby = orderdetail.getJSONObject("canceledBy");
+                                        order.setActionbyid(cancelledby.getString("_id"));
+                                        order.setActionbyname(cancelledby.getString("name"));
+                                        order.setActiondate(orderdetail.getString("canceledAt"));
                                     }
                                     order.setStatus(status);
                                     order.setUpdateDate(orderdetail.getString("updatedAt"));

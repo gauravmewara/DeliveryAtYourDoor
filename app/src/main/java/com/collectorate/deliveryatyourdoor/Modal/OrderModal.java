@@ -5,8 +5,32 @@ import java.util.ArrayList;
 
 public class OrderModal implements Serializable {
     String order_id,status,cancel_reason,deliveryCode,orderDate,updateDate,order_price;
+    String actionbyid,actionbyname,actiondate;
     ArrayList<ProductsModal> orderItems;
 
+    public String getActiondate() {
+        return actiondate;
+    }
+
+    public void setActiondate(String actiondate) {
+        this.actiondate = actiondate;
+    }
+
+    public String getActionbyid() {
+        return actionbyid;
+    }
+
+    public void setActionbyid(String actionbyid) {
+        this.actionbyid = actionbyid;
+    }
+
+    public String getActionbyname() {
+        return actionbyname;
+    }
+
+    public void setActionbyname(String actionbyname) {
+        this.actionbyname = actionbyname;
+    }
 
     public String getOrder_id() {
         return order_id;

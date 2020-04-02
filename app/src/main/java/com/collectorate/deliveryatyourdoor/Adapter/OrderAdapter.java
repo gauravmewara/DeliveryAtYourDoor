@@ -101,12 +101,15 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 mVH.orderdate.setText(orderlist.get(position).getOrderDate());
                 mVH.orderprice.setText(orderlist.get(position).getOrder_price()+" Rs");
                 String status = orderlist.get(position).getStatus();
-                if(status.equals("1")){
+                if(status.equals("Pending")){
                     mVH.orderstatus.setText("Pending");
-                }else if(status.equals("2")){
+                    mVH.orderstatuslayout.setBackground(context.getDrawable( R.drawable.statusbackgroundblue));
+                }else if(status.equals("Delivered")){
                     mVH.orderstatus.setText("Delivered");
-                }else if(status.equals("3")){
+                    mVH.orderstatuslayout.setBackground(context.getDrawable( R.drawable.statusbackgroundgreen));
+                }else if(status.equals("Cancelled")){
                     mVH.orderstatus.setText("Cancelled");
+                    mVH.orderstatuslayout.setBackground(context.getDrawable( R.drawable.statusbackgroundred));
                 }
                 //mVH.orderstatuslayout.setBackground(context.getResources( R.color.colorBlack));
                 break;
@@ -167,11 +170,14 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
     }
 
-    public void remove(int position){
-        orderlist.remove(position);
-        notifyItemRemoved(position);
-        notifyDataSetChanged();
+    public void upadteList(int position,OrderModal neword){
+
+            orderlist.remove(position);
+            orderlist.add(position,neword);
+            notifyDataSetChanged();
+
     }
+
 
     public OrderModal getItem(int position) {
         return orderlist.get(position);

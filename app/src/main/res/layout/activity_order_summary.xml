@@ -10,7 +10,7 @@
         layout="@layout/toolbar2"
         android:id="@+id/main_toolbar2"/>
     <RelativeLayout
-        android:layout_width="60dp"
+        android:layout_width="72dp"
         android:layout_height="25dp"
         android:id="@+id/rl_ordersummary_orderstatuslayout"
         android:layout_below="@+id/main_toolbar2"
@@ -19,7 +19,7 @@
         android:paddingBottom="5dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginRight="10dp"
         android:background="@color/colorBlack">
         <TextView
             android:layout_width="wrap_content"

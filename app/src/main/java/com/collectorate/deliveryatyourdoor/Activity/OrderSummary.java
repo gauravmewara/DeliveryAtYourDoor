@@ -34,12 +34,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class OrderSummary extends AppCompatActivity {
     TextView orderstatus,deliverycode,orderid,orderdate,deliverydate,deliverydatetext,rsntxt,rsn,cancel,orderamt;
     TextView pagetitle;
-    RelativeLayout orderstatuslayout;
+    RelativeLayout orderstatuslayout,menuback;
     LinearLayout deliverycodeview,deliverydateview;
     RecyclerView cartlistview;
     boolean reasonselected = false,otherselected=false;
@@ -63,6 +65,13 @@ public class OrderSummary extends AppCompatActivity {
         selecteposition = (int)getIntent().getIntExtra("position",0);
         pagetitle = (TextView)findViewById(R.id.tv_toolbar2_heading);
         pagetitle.setText("Order Details");
+        menuback=(RelativeLayout)findViewById(R.id.rl_toolbar2_menu);
+        menuback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         orderstatus = (TextView)findViewById(R.id.tv_ordersummary_orderstatus);
         deliverycode = (TextView)findViewById(R.id.tv_ordersummary_deliverycode);
         orderid = (TextView)findViewById(R.id.tv_ordersummary_orderid);
@@ -79,7 +88,7 @@ public class OrderSummary extends AppCompatActivity {
                 View sheetView = LayoutInflater.from(OrderSummary.this).inflate(R.layout.order_cancel_dialog,null);
                 cancelorder.setContentView(sheetView);
                 reasonList = new ArrayList<>();
-                reasonList.add("Reason For Cancellation");
+                reasonList.add("Select Reason");
                 reasonList.add("Product not satisfactory");
                 reasonList.add("Delivery time is large");
                 reasonList.add("Other");
@@ -133,8 +142,11 @@ public class OrderSummary extends AppCompatActivity {
                                 otherempty = true;
                             }
                         }
-                        if(reasonselected && !otherempty)
+                        if(reasonselected && !otherempty) {
                             cancelOrder(order.getOrder_id());
+                            //cancelled = true;
+                            //onBackPressed();
+                        }
                         else
                             Toast.makeText(OrderSummary.this,"Select Reason",Toast.LENGTH_LONG).show();
                     }
@@ -163,6 +175,7 @@ public class OrderSummary extends AppCompatActivity {
             deliverycode.setText(order.getDeliveryCode());
             rsntxt.setVisibility(View.GONE);
             rsn.setVisibility(View.GONE);
+            orderstatuslayout.setBackground(getDrawable(R.drawable.statusbackgroundblue));
             deliverydateview.setVisibility(View.GONE);
         }else if(status.equals("Delivered")){
             cancel.setVisibility(View.INVISIBLE);
@@ -172,6 +185,7 @@ public class OrderSummary extends AppCompatActivity {
             deliverydateview.setVisibility(View.VISIBLE);
             deliverydatetext.setText("Delivery Date: ");
             deliverydate.setText(order.getUpdateDate());
+            orderstatuslayout.setBackground(getDrawable(R.drawable.statusbackgroundgreen));
         }else if(status.equals("Cancelled")){
             cancel.setVisibility(View.INVISIBLE);
             deliverycodeview.setVisibility(View.GONE);
@@ -181,11 +195,12 @@ public class OrderSummary extends AppCompatActivity {
             deliverydateview.setVisibility(View.VISIBLE);
             deliverydatetext.setText("Cancel Date: ");
             deliverydate.setText(order.getUpdateDate());
+            orderstatuslayout.setBackground(getDrawable(R.drawable.statusbackgroundred));
         }
         orderstatus.setText(order.getStatus());
         orderid.setText(order.getOrder_id());
         orderdate.setText(order.getOrderDate());
-        orderamt.setText(order.getOrderDate());
+        orderamt.setText(order.getOrder_price());
         cartlistdata = new ArrayList<>();
         ArrayList<ProductsModal> itemdata = order.getOrderItems();
         for (ProductsModal temp:itemdata) {
@@ -203,6 +218,11 @@ public class OrderSummary extends AppCompatActivity {
     public void cancelOrder(String orderid){
         try{
             JSONObject jsonBody = new JSONObject();
+            if(otherselected) {
+                jsonBody.put("reason",other.getText().toString().trim() );
+            }else{
+                jsonBody.put("reason",cancelreason);
+            }
             POSTAPIRequest getapiRequest=new POSTAPIRequest();
             String url = URLs.BASE_URL+URLs.CANCEL_ORDER_URL+orderid;
             Log.i("url", String.valueOf(url));
@@ -250,14 +270,23 @@ public class OrderSummary extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent resultIntent = getIntent();
+        Intent resultIntent = new Intent();
+        Bundle b = new Bundle();
         if(cancelled) {
-            resultIntent.putExtra("cancelled", "yes");
-            resultIntent.putExtra("position", selecteposition);
+            b.putString("cancelled", "yes");
+            OrderModal neword = order;
+            neword.setStatus("Cancelled");
+            neword.setActionbyid(SessionManagement.getUserId(OrderSummary.this));
+            neword.setActionbyname("Customer");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+            String currentDateandTime = sdf.format(new Date());
+            neword.setActiondate(currentDateandTime);
+            b.putInt("oldorder", selecteposition);
+            b.putSerializable("neworder", neword);
         } else {
-            resultIntent.putExtra("cancelled", "no");
+            b.putString("cancelled", "no");
         }
+        resultIntent.putExtras(b);
         setResult(Activity.RESULT_OK,resultIntent);
         finish();
     }

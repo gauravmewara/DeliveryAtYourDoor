@@ -4,11 +4,12 @@
     android:orientation="vertical"
     android:id="@+id/rl_adapter_order_mainlayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="90dp"
     android:padding="15dp">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/ll_adapter_orderitem_ordertext"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -40,22 +41,21 @@
             android:textSize="13dp"/>
     </LinearLayout>
     <RelativeLayout
-        android:layout_width="60dp"
+        android:layout_width="72dp"
         android:layout_height="25dp"
         android:id="@+id/rl_adapter_order_orderstatuslayout"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/ll_adapter_orderitem_ordertext"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="3dp"
+        android:paddingLeft="5dp"
         android:background="@color/colorBlack">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_adapter_order_orderstatus"
-            android:text="Pending"
+            android:text="Delivered"
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:layout_centerInParent="true"
