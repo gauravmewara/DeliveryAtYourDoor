@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/rl_fg_placeorder_cart"
+        android:background="@color/graymedium"
         android:layout_alignParentBottom="true">
         <TextView
             android:layout_width="wrap_content"
@@ -71,8 +72,10 @@
             android:gravity="center"
             android:layout_centerVertical="true" />
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/rarrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/iv_fg_placeorder_cart_arrow"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>

@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
+    android:background="@color/bluegray"
     tools:context=".Activity.Login">
     <ImageView
         android:layout_width="wrap_content"
@@ -22,6 +23,12 @@
         android:layout_weight="6"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp">
+
+    <RelativeLayout
+        android:background="@drawable/whiteborderwithboudarybox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,6 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:id="@+id/tv_login_loginttbn"
+                android:textColor="@color/colorBlack"
+                android:background="@drawable/roundedlightbluebutton"
                 android:textSize="16dp"
                 android:foregroundGravity="center"
                 android:gravity="center"
@@ -80,6 +89,8 @@
                 android:layout_height="45dp"
                 android:layout_toRightOf="@+id/tv_signin_divider"
                 android:id="@+id/tv_login_signupbtn"
+                android:background="@drawable/roundedlightbluebutton"
+                android:textColor="@color/colorBlack"
                 android:gravity="center"
                 android:textSize="16dp"
                 android:text="SIGN UP"/>
@@ -88,7 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_login_forgotpassword"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/blue"
             android:text="Forgot Password?"
             android:layout_below="@+id/rl_login_btns"/>
+    </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

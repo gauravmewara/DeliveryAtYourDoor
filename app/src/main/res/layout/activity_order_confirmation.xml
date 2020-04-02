@@ -125,6 +125,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/blue"
             android:layout_marginTop="15dp"
             android:textSize="11dp"
             android:text="Order will be delivered at your address mentioned in your profile"/>
@@ -133,6 +134,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:background="@color/green"
         android:id="@+id/tv_orderconfirm_submit"
         android:text="Back to Home"
         android:layout_alignParentBottom="true"

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_cart_selecteditems"
+        android:layout_margin="5dp"
         android:layout_below="@+id/main_toolbar2"
         android:layout_above="@+id/rl_cart_total_layout"
         />
@@ -52,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:id="@+id/divider1_cart"
-        android:background="@color/colorBlack"
+        android:background="@color/blue"
         android:layout_alignLeft="@+id/rl_cart_total_layout"
         android:layout_alignRight="@+id/rl_cart_total_layout"
         android:layout_above="@+id/tv_cart_address_info"
@@ -60,6 +61,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/blue"
         android:id="@+id/tv_cart_address_info"
         android:text="Order will be delivered at your address mentioned in your profile"
         android:layout_above="@+id/tv_cart_actionbtn"
@@ -75,5 +77,6 @@
         android:layout_alignParentBottom="true"
         android:text="Place Order"
         android:textSize="16dp"
-        android:textColor="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"
+        android:background="@color/green"/>
 </RelativeLayout>

@@ -326,6 +326,12 @@ public class OrderPlaceFragment extends Fragment implements View.OnClickListener
                 orderPrice-=price;
             }
         }
+
+        if(orderPrice == 0 || orderPrice==0.0)
+            cartbtn.setBackground(getContext().getDrawable(R.color.graymedium));
+        else
+            cartbtn.setBackground(getContext().getDrawable(R.color.green));
+
         totalprice.setText(String.valueOf(orderPrice));
     }
 }

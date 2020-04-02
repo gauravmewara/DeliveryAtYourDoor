@@ -9,24 +9,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginRight="15dp">
+
         <RelativeLayout
+            android:id="@+id/rl_toolbar2_menu"
             android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/rl_toolbar2_menu">
+            android:layout_height="40dp">
+
             <ImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
                 android:id="@+id/iv_toolbar2_menu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:foregroundGravity="left"
-                />
+                android:src="@drawable/larrow" />
         </RelativeLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/tv_toolbar2_heading"
             android:layout_centerInParent="true"
-            android:textSize="14sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_toLeftOf="@+id/rl_toolbar2_notification_view"
             android:layout_toRightOf="@+id/rl_toolbar2_menu"
