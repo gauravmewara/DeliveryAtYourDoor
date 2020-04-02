@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.collectorate.deliveryatyourdoor.Modal.WardZoneModal;
 import com.collectorate.deliveryatyourdoor.R;
 
 import java.util.ArrayList;
 
-public class WardNumberSpinnerAdapter extends BaseAdapter {
+public class DeliveryWardZoneAdapter extends BaseAdapter {
+
     Context context;
-    ArrayList<WardZoneModal> list;
+    ArrayList<String> list;
     LayoutInflater inflator;
 
-    public WardNumberSpinnerAdapter(Context context,ArrayList<WardZoneModal> list){
+    public DeliveryWardZoneAdapter(Context context, ArrayList<String> list){
         this.context = context;
         this.list = list;
         inflator = (LayoutInflater.from(context));
@@ -40,11 +40,15 @@ public class WardNumberSpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflator.inflate(R.layout.warzone_spinner_item, null);
+        view = inflator.inflate(R.layout.delivery_warzone_spinner_item, null);
         TextView names = (TextView) view.findViewById(R.id.spinner_singleItem);
         /*TextView phone = (TextView) view.findViewById(R.id.spinner_phone_code);*/
-        /* phone.setText(list.get(i).getCountryphonename());*/
-        names.setText(list.get(i).getWardNumber());
+       /* phone.setText(list.get(i).getCountryphonename());*/
+        names.setText(list.get(i));
         return view;
     }
+
+
+
+
 }

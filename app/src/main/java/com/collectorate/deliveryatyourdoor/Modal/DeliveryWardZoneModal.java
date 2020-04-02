@@ -1,8 +1,8 @@
 package com.collectorate.deliveryatyourdoor.Modal;
 
-public class WardZoneModal {
+public class DeliveryWardZoneModal {
 
-    String direction,wardNumber;;
+    private String direction,wardNumber;
 
     public String getWardNumber() { return wardNumber; }
     public void setWardNumber(String wardNumber) { this.wardNumber = wardNumber; }

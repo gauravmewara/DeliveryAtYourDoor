@@ -15,13 +15,13 @@
             android:layout_height="40dp"
             android:id="@+id/rl_toolbar_menu">
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
                 android:id="@+id/iv_toolbar_menu"
                 android:layout_centerVertical="true"
                android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/dock"
                 />
 
         </RelativeLayout>
@@ -30,16 +30,18 @@
             android:layout_height="match_parent"
             android:id="@+id/tv_toolbar_heading"
             android:layout_centerInParent="true"
-            android:textSize="14sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
             android:gravity="center"
-            android:layout_toLeftOf="@+id/rl_toolbar_notification_view"
+            android:layout_toLeftOf="@+id/rl_toolbar_filterLayout"
             android:layout_toRightOf="@+id/rl_toolbar_menu"
             android:text="Page Title"/>
 
         <RelativeLayout
                 android:layout_width="47dp"
                 android:layout_height="40dp"
-                android:id="@+id/rl_toolbar_notification_view"
+                android:id="@+id/rl_toolbar_filterLayout"
                 android:layout_alignParentRight="true">
                 <ImageView
                     android:layout_width="35dp"

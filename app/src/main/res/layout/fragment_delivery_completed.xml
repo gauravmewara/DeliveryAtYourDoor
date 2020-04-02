@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.DeliveryCompletedFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/noItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/noitems"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:id="@+id/rv_fg_itemlist"/>
+
+
+    <include
+        layout="@layout/delivery_progress_indicator"
+        android:id="@+id/fg_request_progresbar"
+        android:visibility="visible"/>
+
+</FrameLayout>

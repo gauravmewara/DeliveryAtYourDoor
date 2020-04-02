@@ -7,8 +7,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.view.Window;
 import com.android.volley.DefaultRetryPolicy;
@@ -92,7 +90,7 @@ public class RequestQueueService {
 
                 mProgressDialog = new Dialog(activity);
                 mProgressDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                mProgressDialog.setContentView(R.layout.progress_indicator);
+                mProgressDialog.setContentView(R.layout.delivery_progress_indicator);
                 mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 mProgressDialog.show();
                 mProgressDialog.setCancelable(false);

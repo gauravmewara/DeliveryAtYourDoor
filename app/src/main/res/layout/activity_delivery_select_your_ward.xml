@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DeliverySelectYourWard">
         <include
-            layout="@layout/maintoolbar"
+            layout="@layout/delivery_maintoolbar"
             android:id="@+id/include_bookingdetails"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -63,7 +63,7 @@
                     android:id="@+id/wardZone_spinner"
                     android:layout_width="wrap_content"
                     android:autofillHints="code"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:scrollbarSize="14sp">
                 </androidx.appcompat.widget.AppCompatSpinner>
             </LinearLayout>
@@ -128,6 +128,7 @@
         android:layout_height="30dp"
         android:orientation="vertical"
         android:gravity="center"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true">
 
         <TextView

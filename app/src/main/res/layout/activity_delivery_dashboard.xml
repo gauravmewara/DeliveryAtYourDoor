@@ -7,24 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DeliveryDashboard">
 
+
     <include
-        layout="@layout/maintoolbar"
+        android:id="@+id/dileveryDashboardTitle"
+        layout="@layout/delivery_maintoolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/dileveryDashboardTitle"
-        android:layout_marginTop="5dp"/>
-
-    <TextView
-        android:id="@+id/tv_dashboardHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ward 1 North"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorblack"
-        android:layout_below="@+id/dileveryDashboardTitle"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +22,22 @@
         android:id="@+id/lh_dashboardTotalLayout"
         android:weightSum="3"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/tv_dashboardHead">
+        android:layout_below="@+id/dileveryDashboardTitle">
+
+        <TextView
+            android:id="@+id/tv_dashboardHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ward 1 North"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+
+
+            android:layout_below="@+id/dileveryDashboardTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"/>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,7 +45,8 @@
             android:layout_gravity="start"
             android:gravity="start"
             android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
+
+
             android:layout_weight="1"
             >
             <TextView
@@ -49,26 +54,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
                 android:text="@string/totalOrders"/>
             <TextView
                 android:id="@+id/tv_totalorders_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
                 android:text=" "/>
         </LinearLayout>
 
 
-        <View
-            android:layout_width="20dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"/>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right"
+            android:layout_gravity="left"
+            android:gravity="left"
             android:orientation="horizontal"
             android:layout_weight="1">
             <TextView
@@ -76,13 +82,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
                 android:text="@string/totalAmount"/>
             <TextView
                 android:id="@+id/tv_totalAmounts_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
                 android:text=" "/>
         </LinearLayout>
     </LinearLayout>
@@ -90,16 +99,55 @@
     <RelativeLayout
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_below="@+id/lh_dashboardTotalLayout"
-        />
+        android:layout_marginTop="10dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:id="@+id/orderidSpinnerLayout">
+            <Spinner
+                android:id="@+id/orderIdSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/searchboxEditTextLayout"
+            android:layout_toRightOf="@+id/orderidSpinnerLayout"
+            android:layout_toLeftOf="@+id/dashbordBtn_search"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search Box"
+                android:gravity="center"
+                android:maxLines="1"
+                android:maxLength="16"
+                >
+
+            </EditText>
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/dashbordBtn_search"
+            android:layout_alignParentRight="true"
+            android:text="@string/serchBtn"/>
+    </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_dashboard"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_below="@+id/searchLayout"
-        android:layout_marginTop="0dp" />
+        />
 
     <RelativeLayout
         android:id="@+id/rl_bottomNavigation"
@@ -109,12 +157,14 @@
         android:layout_alignParentBottom="true"
         >
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/rl_btnLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:weightSum="3"
+            >
 
             <Button
                 android:id="@+id/btn_pending"
@@ -128,7 +178,8 @@
                 android:paddingLeft="8dp"
                 android:layout_marginTop="10dp"
                 android:layout_alignParentLeft="true"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:layout_weight="1"/>
             <View
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
@@ -147,7 +198,8 @@
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:layout_weight="1"/>
 
             <View
                 android:layout_width="20dp"
@@ -160,15 +212,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
-                android:text="@string/completed"
+                android:text="@string/cancelled"
                 android:layout_toRightOf="@+id/btn_devider2"
                 android:textColor="@color/colorBlack"
                 android:background="@android:color/transparent"
                 android:textSize="12sp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp"
-                android:layout_marginTop="10dp"/>
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

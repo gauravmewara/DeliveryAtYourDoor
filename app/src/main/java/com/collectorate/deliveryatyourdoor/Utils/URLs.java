@@ -1,8 +1,10 @@
 package com.collectorate.deliveryatyourdoor.Utils;
 
 public class URLs {
-    public static final String BASE_URL = "http://3.6.67.124:8081/api/controller/";
-    public static final String SIGN_IN_URL = "signin";
+    public static final String BASE_URL = "http://3.7.34.226:8081/api/";
+
+    public static final String PRODUCT_LIST = "product/list";
+    public static final String ORDER_FILTER = "order/filter";
     public static final String SIGN_OUT_URL = "signout";
     public static final String CREATE_BOOKING = "booking";
     public static final String UPDATE_BOOKING = "booking/";

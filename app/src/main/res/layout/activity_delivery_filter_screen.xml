@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DeliveryFilterScreen">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="35dp"
+        android:text="Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_fromDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="55dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_fromDate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:text="To"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_toDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="52dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tv_to"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_fromCalender"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_toDate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/lhwardZone_spinnerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fromDate"
+        android:layout_marginTop="20dp"
+        android:weightSum="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/wardZoneSpinnerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"></TextView>
+        <Spinner
+            android:id="@+id/wardZoneSpinnerfilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"></Spinner>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/lhwardNo_spinnerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lhwardZone_spinnerLayout"
+        android:layout_marginTop="20dp"
+        android:weightSum="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/wardNoSpinnerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"></TextView>
+        <Spinner
+            android:id="@+id/wardNoSpinnerfilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"></Spinner>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="49dp"
+        android:text="Apply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lhwardNo_spinnerLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

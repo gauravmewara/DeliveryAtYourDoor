@@ -94,4 +94,11 @@ public class SessionManagement {
     public static void setZone(Context con,String zone){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE,zone);
     }
+    public static String getWard(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,WARD);
+    }
+    public static String getZone(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE);
+    }
+
 }

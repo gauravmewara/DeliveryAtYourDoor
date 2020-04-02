@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DeliveryOrderSummary">
+
+    <RelativeLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <include
+            layout="@layout/delivery_toolbar_backarrow"
+            android:id="@+id/toolbar"></include>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_toolbar"
+        android:layout_marginTop="5dp"
+        android:id="@+id/rl_textsLayout">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_orderid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/orderid"
+                    android:textSize="18sp"></TextView>
+                <TextView
+                    android:id="@+id/tv_orderid_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textSize="18sp"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textSize="18sp"></TextView>
+                <TextView
+                    android:id="@+id/tv_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textSize="18sp"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerViewLayout"
+        android:layout_below="@+id/rl_textsLayout"
+        android:layout_marginTop="5dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_orderSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/nodataProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/noproducts"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="30dp"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/itemprogressBar"
+            android:layout_centerInParent="true"/>
+
+
+        <LinearLayout
+            android:id="@+id/tv_totalLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/rv_orderSummary"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rv_orderSummary"
+                android:text="Total :"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"></TextView>
+
+            <TextView
+                android:id="@+id/tv_total_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rv_orderSummary"
+                android:text=" 150rs"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"></TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+   <LinearLayout
+       android:id="@+id/bottomLayout"
+       android:layout_width="match_parent"
+       android:layout_height="40dp"
+       android:orientation="horizontal"
+       android:layout_alignParentBottom="true">
+
+       <LinearLayout
+           android:id="@+id/completedLayout"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@color/colordark_grey"
+           android:visibility="gone">
+
+           <TextView
+               android:id="@+id/tv_completed"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="@string/completed"
+               android:gravity="center"
+               android:textColor="@color/greenDark"></TextView>
+       </LinearLayout>
+
+
+       <LinearLayout
+           android:id="@+id/lh_buttonsLayout"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           android:weightSum="2">
+
+           <Button
+               android:id="@+id/orderSummaryCancelBtn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:layout_gravity="center"
+               android:layout_weight="1"
+               android:text="@string/cancel"
+               android:background="@android:color/transparent"/>
+           <View
+               android:layout_width="3dp"
+               android:layout_height="match_parent"
+               android:background="@color/colorBlack"/>
+           <Button
+               android:id="@+id/orderSummaryCompleteBtn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:layout_gravity="center"
+               android:layout_weight="1"
+               android:text="@string/complete"
+               android:background="@android:color/transparent"/>
+       </LinearLayout>
+   </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/OtpLayout"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bottomLayout"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/delivery_box_outline">
+        <EditText
+            android:id="@+id/et_OTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="OTP"
+            android:maxLength="6"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/askCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textAskingForOtp"
+        android:layout_above="@+id/OtpLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="15dp"
+         ></TextView>
+
+</RelativeLayout>
