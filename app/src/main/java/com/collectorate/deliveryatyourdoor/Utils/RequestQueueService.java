@@ -7,6 +7,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.view.Window;
 import com.android.volley.DefaultRetryPolicy;
@@ -14,7 +16,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.collectorate.deliveryatyourdoor.R;
-
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,7 +79,6 @@ public class RequestQueueService {
             e.printStackTrace();
         }
     }
-
     //Start showing progress
     public static void showProgressDialog(final Activity activity) {
         activity.runOnUiThread(new Runnable() {
@@ -87,10 +87,9 @@ public class RequestQueueService {
                 if (mProgressDialog != null) {
                     if (mProgressDialog.isShowing() == true) cancelProgressDialog();
                 }
-
                 mProgressDialog = new Dialog(activity);
                 mProgressDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                mProgressDialog.setContentView(R.layout.delivery_progress_indicator);
+                mProgressDialog.setContentView(R.layout.progress_indicator);
                 mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 mProgressDialog.show();
                 mProgressDialog.setCancelable(false);
@@ -98,7 +97,6 @@ public class RequestQueueService {
         });
 
     }
-
     //Stop showing progress
     public static void cancelProgressDialog() {
         if (mProgressDialog != null){

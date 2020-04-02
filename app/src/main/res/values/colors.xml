@@ -16,4 +16,8 @@
     <color name="colorGreyLight2">#EBE7E7</color>
     <color name="drawerColor">#f1f1f1</color>
     <color name="colorlightblue">#02BAF7</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlue">#0066FF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorGreen">#00E600</color>
 </resources>

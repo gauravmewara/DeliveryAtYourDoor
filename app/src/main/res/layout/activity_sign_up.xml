@@ -45,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/et_signup_mobile"
+                    android:inputType="number"
                     android:hint="Mobile Number"/>
             </RelativeLayout>
             <RelativeLayout
@@ -98,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/et_signup_password"
+                    android:inputType="textPassword"
                     android:hint="Password"/>
             </RelativeLayout>
             <RelativeLayout
@@ -118,45 +120,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/et_signup_pincode"
+                    android:inputType="number"
                     android:hint="Pincode"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:id="@+id/et_signup_zone"
+                    android:id="@+id/sp_signup_zone"
                     />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:id="@+id/tv_signup_knwward"
                     android:layout_alignParentRight="true"
                     android:hint="Know Your Ward"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:id="@+id/et_signup_ward"
-                    android:layout_marginRight="5dp"
-                    android:text="Ward No"
-                    android:gravity="left|center_vertical"/>
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/iv_signup_ward"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:foregroundGravity="center_vertical"/>
+                    android:id="@+id/sp_signup_ward"
+                    />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
         </LinearLayout>
     </ScrollView>
     <TextView

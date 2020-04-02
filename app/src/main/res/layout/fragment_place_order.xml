@@ -3,11 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <androidx.recyclerview.widget.RecyclerView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_fg_placeorder_cart">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_placeorder_nodata"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp"
+            android:layout_marginTop="35dp"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:text="No Products"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_fg_placeorder_list"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pg_placeorder"
+            android:visibility="gone"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_fg_placeorder_list"
-        android:layout_above="@+id/rl_fg_placeorder_cart"/>
+        android:layout_above="@+id/rl_fg_placeorder_cart"/>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"

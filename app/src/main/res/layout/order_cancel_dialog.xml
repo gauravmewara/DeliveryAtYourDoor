@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_canceldialog_rsntitle"
+        android:text="Select Reason"
+        android:textSize="20dp"/>-->
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sp_order_cancel_rsnlist"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/et_fragment_cancel_rsn_txt"
+        android:hint="Enter Your Reason"
+        android:visibility="gone"
+        android:gravity="top|left"
+        android:layout_below="@id/sp_order_cancel_rsnlist"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_ordercancel_warning"
+        android:layout_below="@+id/et_fragment_cancel_rsn_txt"
+        android:layout_marginTop="15dp"
+        android:text="Are you sure you want to cancel the order ?"
+        android:layout_centerHorizontal="true"
+        android:textSize="12dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/divider1_ordercancel"
+        android:layout_below="@+id/tv_ordercancel_warning"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/tv_canceldialog_accept"
+        android:layout_below="@+id/divider1_ordercancel"
+        android:text="Yes"
+        android:textSize="18dp"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/tv_canceldialog_reject"
+        android:layout_below="@+id/tv_canceldialog_accept"
+        android:text="No"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"/>
+</RelativeLayout>

@@ -7,15 +7,14 @@ import java.util.HashMap;
 public class SessionManagement {
     private static final String IS_LOGGEDIN = "is_login";
     private static final String USER_ID = "user_id";
-    private static final String PHONE_CODE = "phone_code";
     private static final String PHONE_NO = "phone_no";
     private static final String USER_TOKEN = "token";
-    private static final String LANGUAGE= "language";
     private static final String NAME = "name";
     private static final String WARD = "ward";
     private static final String ZONE = "zone";
     private static final String PINCODE = "pincode";
     private static final String ADDRESS = "address";
+    private static final String USERTYPE = "user_type";
     private static final String SHARED_NOTIFICATION_COUNT_KEY = "notification_count";
 
 
@@ -28,7 +27,7 @@ public class SessionManagement {
         }
     }
 
-    public static void createLoginSession(Context con,Boolean islogin, String user_id, String phoneno,String name,String token,String address,String noticount,String pincode,String zone, String ward){
+    public static void createLoginSession(Context con,Boolean islogin, String user_id, String phoneno,String name,String token,String address,String pincode,String zone, String ward, String usrtype,String noticount){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,IS_LOGGEDIN,islogin);
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USER_ID,user_id);
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PHONE_NO,phoneno);
@@ -38,6 +37,7 @@ public class SessionManagement {
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,WARD,ward);
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE,zone);
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PINCODE,pincode);
+        SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USERTYPE,usrtype);
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_NOTICATION_TAG,SHARED_NOTIFICATION_COUNT_KEY,noticount);
     }
 
@@ -46,7 +46,7 @@ public class SessionManagement {
         SharedPrefUtil.deletePreference(con,Constants.SHARED_PREF_NOTICATION_TAG);
     }
 
-    public static HashMap<String,String> getUserData(Context con){
+    /*public static HashMap<String,String> getUserData(Context con){
         HashMap<String,String> userdata = new HashMap<>();
         userdata.put(IS_LOGGEDIN,Boolean.toString(SharedPrefUtil.getBooleanPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,IS_LOGGEDIN)));
         userdata.put(USER_ID,SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USER_ID));
@@ -56,11 +56,8 @@ public class SessionManagement {
         userdata.put(NAME,SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,NAME));
         userdata.put(LANGUAGE,SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,LANGUAGE));
         return userdata;
-    }
+    }*/
 
-    public static String getUserPhoneCode(Context con){
-        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PHONE_CODE);
-    }
 
     public static String getUserToken(Context con){
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USER_TOKEN);
@@ -73,18 +70,32 @@ public class SessionManagement {
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,NAME);
     }
 
-    public static String getLanguage(Context con){
-        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,LANGUAGE);
-    }
     public static String getPhoneNo(Context con){
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PHONE_NO);
     }
     public static String getAddress(Context con){
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ADDRESS);
     }
+    public static String getUsertype(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USERTYPE);
+    }
     public static String getNotificationCount(Context con){
         return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_NOTICATION_TAG,SHARED_NOTIFICATION_COUNT_KEY);
     }
+
+    public static String getPincode(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PINCODE);
+    }
+
+    public static String getZone(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE);
+    }
+
+    public static String getWard(Context con){
+        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,WARD);
+    }
+
+
     public static void setAddress(Context con,String address){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ADDRESS,address);
     }
@@ -94,11 +105,10 @@ public class SessionManagement {
     public static void setZone(Context con,String zone){
         SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE,zone);
     }
-    public static String getWard(Context con){
-        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,WARD);
+    public static void setUserType(Context con,String usrtype){
+        SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,USERTYPE,usrtype);
     }
-    public static String getZone(Context con){
-        return SharedPrefUtil.getStringPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,ZONE);
+    public static void setPincode(Context con,String pincode){
+        SharedPrefUtil.setPreferences(con,Constants.SHARED_PREF_LOGIN_TAG,PINCODE,pincode);
     }
-
 }

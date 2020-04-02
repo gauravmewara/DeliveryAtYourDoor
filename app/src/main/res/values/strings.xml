@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">DeliveryAtYourDoor</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
     <string name="selectYourWard">Select Your Ward</string>
     <string name="wardzone">Ward Zone</string>
     <string name="wardNo">Ward No.</string>
